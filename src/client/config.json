@@ -1,0 +1,6 @@
+{
+  "server":"localhost",
+  "port":8000,
+  "guid":1,
+  "api-secret":"deadbeef"
+}

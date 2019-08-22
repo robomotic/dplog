@@ -1,0 +1,4 @@
+dateutil
+psutil
+browserhistory
+pyinstaller

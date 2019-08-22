@@ -1,0 +1,75 @@
+{% extends 'surveys/base.html' %}
+{% load bootstrap4 %}
+{% block title %}Simulation result{% endblock %}
+
+{% block content %}
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+{% endblock %}
+
+{% block bootstrap4_extra_script %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script>
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Survey responses with positive error {{error}}'
+    },
+    xAxis: {
+        categories: ['Real', 'Private', 'Estimated']
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Total positive responses'
+        },
+        stackLabels: {
+            enabled: true,
+            style: {
+                fontWeight: 'bold',
+                color: ( // theme
+                    Highcharts.defaultOptions.title.style &&
+                    Highcharts.defaultOptions.title.style.color
+                ) || 'gray'
+            }
+        }
+    },
+    legend: {
+        align: 'right',
+        x: -30,
+        verticalAlign: 'top',
+        y: 25,
+        floating: true,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || 'white',
+        borderColor: '#CCC',
+        borderWidth: 1,
+        shadow: false
+    },
+    tooltip: {
+        headerFormat: '<b>{point.x}</b><br/>',
+        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+    },
+    plotOptions: {
+        column: {
+            stacking: 'normal',
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    series: [{
+        name: 'Positive',
+        data: [{{real.p}},{{private.p}},{{estimated.p}}]
+    }, {
+        name: 'Negative',
+        data: [{{real.n}},{{private.n}},{{estimated.n}}]
+    }]
+});
+</script>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'surveys/bootstrap.html' %}
+
+{% load bootstrap4 %}
+
+{% block bootstrap4_content %}
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Main</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Surveys
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'questionvirtual_create' %}">Create Virtual...</a>
+                  <a class="dropdown-item" href="{% url 'questionvirtual_list' %}">View all virtuals</a>
+                  <a class="dropdown-item" href="{% url 'question_create' %}">Create Concrete...</a>
+                  <a class="dropdown-item" href="{% url 'question_list' %}">View all concrete</a>s
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="clientMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Clients
+                </a>
+                <div class="dropdown-menu" aria-labelledby="clientMenuLink">
+                  <a class="dropdown-item" href="{% url 'clients_list' %}">View clients</a>
+                  <a class="dropdown-item" href="{% url 'events_list' %}">View events</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+    </div>
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
+
+{% endblock %}

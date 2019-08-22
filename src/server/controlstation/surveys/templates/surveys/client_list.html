@@ -1,0 +1,22 @@
+{% extends 'surveys/base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}List of clients{% endblock %}
+
+{% block content %}
+<ul class="list-group">
+{% for client in object_list %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{client.guid}}</h5>
+            <p class="card-text">Registered on:{{client.registered_datetime}}</p>
+          </div>
+        </div>
+    </li>
+{% empty %}
+    <li>No registered clients yet.</li>
+{% endfor %}
+</ul>
+{% endblock %}

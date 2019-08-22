@@ -1,0 +1,21 @@
+{% extends 'surveys/base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}Create Survey{% endblock %}
+
+{% block content %}
+    <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+{% endblock %}
+
+{% block bootstrap4_extra_script %}
+  <script type="text/javascript">
+    $(function () {
+      $('#initial-id_end_datetime').datepicker();
+      $('#initial-id_begin_datetime').datepicker();
+
+    });
+  </script>
+{% endblock %}

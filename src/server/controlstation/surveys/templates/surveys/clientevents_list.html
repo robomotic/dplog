@@ -1,0 +1,25 @@
+{% extends 'surveys/base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}Event logs{% endblock %}
+
+{% block content %}
+<ul class="list-group">
+{% for event in object_list %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{event.id}}</h5>
+            <p class="card-text">Timestamp:{{event.event_datetime}}</p>
+              <p class="card-text">Client guid:{{event.guid}}</p>
+              <p class="card-text">Request:{{event.request_type}}</p>
+              <p class="card-text">Response:{{event.response_type}}</p>
+          </div>
+        </div>
+    </li>
+{% empty %}
+    <li>No events yet.</li>
+{% endfor %}
+</ul>
+{% endblock %}

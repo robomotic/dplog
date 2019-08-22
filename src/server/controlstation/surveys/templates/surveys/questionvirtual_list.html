@@ -1,0 +1,27 @@
+{% extends 'surveys/base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}List of registered clients{% endblock %}
+
+{% block content %}
+<ul class="list-group">
+{% for virtual_survey in object_list %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{virtual_survey.title}}</h5>
+            <p class="card-text">{{virtual_survey.get_observable_type_display}} - {{virtual_survey.observable}}</p>
+              {% if virtual_survey.completed %}
+                <a class="btn btn-primary" href="{% url 'runvirtualsim' question_id=virtual_survey.id %}">View Simulation</a>
+                {% else %}
+                 <a class="btn btn-primary" href="{% url 'runvirtualsim' question_id=virtual_survey.id %}">Run Simulation</a>
+              {% endif %}
+          </div>
+        </div>
+    </li>
+{% empty %}
+    <li>No surveys yet.</li>
+{% endfor %}
+</ul>
+{% endblock %}

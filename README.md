@@ -22,8 +22,10 @@ Folder structure explained:
 
 ## Run server
 The server currently runs on a file sqlite database.
+
 Create a pyenv with python 3.6 and install the requirements:
 * pip3 install -r requirements.txt
+
 To run the server:
 * remove the db.sqlite3
 * manage.py check

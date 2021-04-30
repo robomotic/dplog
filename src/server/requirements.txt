@@ -6,6 +6,6 @@ django-bootstrap4==0.0.8
 pyasn1==0.4.2
 pytz==2019.1
 PyYAML==3.12
-rsa==3.4.2
+rsa==4.7
 sqlparse==0.3.0
 wincertstore==0.2

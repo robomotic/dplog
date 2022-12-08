@@ -1,5 +1,5 @@
 awscli==1.14.11
-certifi==2018.11.29
+certifi==2022.12.7
 colorama==0.3.7
 Django==2.2
 django-bootstrap4==0.0.8
